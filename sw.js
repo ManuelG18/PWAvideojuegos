@@ -1,12 +1,12 @@
-;
 //asignar un nombre y versión al cache
-const CACHE_NAME = 'los videojuegos',
-  urlsToCache = [
-    './',
-    './style.css',
-    './script.js',
-    './img/favicon.png'
-  ]
+const CACHE_NAME = 'static-cache-v9';
+urlsToCache = [
+  './',
+  './css/',
+  './script.js',
+  './img/favicon.ico',
+  './index.html',
+];
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
 self.addEventListener('install', e => {
@@ -18,7 +18,7 @@ self.addEventListener('install', e => {
       })
       .catch(err => console.log('Falló registro de cache', err))
   )
-})
+});
 
 //una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
 self.addEventListener('activate', e => {
@@ -39,7 +39,7 @@ self.addEventListener('activate', e => {
       // Le indica al SW activar el cache actual
       .then(() => self.clients.claim())
   )
-})
+});
 
 //cuando el navegador recupera una url
 self.addEventListener('fetch', e => {
